@@ -13,6 +13,13 @@ class AuthForm extends Component {
     e.preventDefault();
     this.props.onSubmit({ email, password});
   }
+  renderErrors() {
+    return this.props.errors.map(error => {
+      return (
+        <div key="error">{error}</div>
+      );
+    });
+  }
   render() {
     return (
       <div className="row">
@@ -31,6 +38,9 @@ class AuthForm extends Component {
             type="password"
             onChange={e => this.setState({ password: e.target.value })}
           />
+        </div>
+        <div className="errors">
+          {this.renderErrors()}
         </div>
         <button className="btn">Submit</button>
       </form>
