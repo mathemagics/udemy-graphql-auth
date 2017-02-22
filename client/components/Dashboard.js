@@ -9,12 +9,16 @@ class Dashboard extends Component {
       hashHistory.push('/login');
     }
   }
+  componentWillUpdate(nextProps){
+    if (!nextProps.data.user) {
+      hashHistory.push('/login');
+    }
+  }
   render() {
     return (
       <h3> The dashboard's melted but we still have the radio</h3>
     );
   }
-
 }
 
 export default graphql(currentUser)(Dashboard);
